@@ -1,0 +1,14 @@
+{
+  "engine": "Python/Numba discrete permutation implementation",
+  "new_variants": [
+    "CPO",
+    "IPSO+2-opt"
+  ],
+  "budget": 1960400,
+  "instances": 20,
+  "paired_seeds_per_instance": 10,
+  "workers_for_objective_experiment": 4,
+  "seed_formula": "20000 + 100*instance + repeat",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "numpy": "2.5.4"
+}

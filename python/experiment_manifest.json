@@ -1,0 +1,160 @@
+{
+  "engine": "Python equivalent permutation implementation; not bitwise MATLAB reproduction",
+  "objective_unit": "relative exposure cost (a.u.)",
+  "budget": 1960400,
+  "instances": 20,
+  "paired_seeds_per_instance": 10,
+  "python": "3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:20:11) [MSC v.1938 64 bit (AMD64)]",
+  "numpy": "1.26.4",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "workers": 4,
+  "seed_formula": "20000 + 100*instance + repeat",
+  "configs": [
+    {
+      "label": "CPO-DBO",
+      "study": "comparison",
+      "kind": "cpo_dbo",
+      "kwargs": {}
+    },
+    {
+      "label": "CPO",
+      "study": "comparison",
+      "kind": "cpo",
+      "kwargs": {}
+    },
+    {
+      "label": "DBO",
+      "study": "comparison",
+      "kind": "dbo",
+      "kwargs": {}
+    },
+    {
+      "label": "GA",
+      "study": "comparison",
+      "kind": "ga",
+      "kwargs": {}
+    },
+    {
+      "label": "IPSO",
+      "study": "comparison",
+      "kind": "ipso",
+      "kwargs": {}
+    },
+    {
+      "label": "GA-PSO",
+      "study": "comparison",
+      "kind": "ga_pso",
+      "kwargs": {}
+    },
+    {
+      "label": "ACO-GA",
+      "study": "comparison",
+      "kind": "aco_ga",
+      "kwargs": {}
+    },
+    {
+      "label": "No 2-opt",
+      "study": "ablation",
+      "kind": "cpo_dbo",
+      "kwargs": {
+        "twoopt_attempts": 0
+      }
+    },
+    {
+      "label": "Fixed probabilities",
+      "study": "ablation",
+      "kind": "cpo_dbo",
+      "kwargs": {
+        "dynamic_probs": 0
+      }
+    },
+    {
+      "label": "No group bias",
+      "study": "ablation",
+      "kind": "cpo_dbo",
+      "kwargs": {
+        "use_group_bias": 0
+      }
+    },
+    {
+      "label": "No elitism",
+      "study": "ablation",
+      "kind": "cpo_dbo",
+      "kwargs": {
+        "use_elite": 0
+      }
+    },
+    {
+      "label": "Swap-only mutation",
+      "study": "ablation",
+      "kind": "cpo_dbo",
+      "kwargs": {
+        "mutation_mode": 1
+      }
+    },
+    {
+      "label": "No personal-best guidance",
+      "study": "ablation",
+      "kind": "cpo_dbo",
+      "kwargs": {
+        "use_pbest": 0
+      }
+    },
+    {
+      "label": "M=200",
+      "study": "sensitivity",
+      "kind": "cpo_dbo",
+      "kwargs": {
+        "m": 200
+      }
+    },
+    {
+      "label": "M=600",
+      "study": "sensitivity",
+      "kind": "cpo_dbo",
+      "kwargs": {
+        "m": 600
+      }
+    },
+    {
+      "label": "Tscale=5000",
+      "study": "sensitivity",
+      "kind": "cpo_dbo",
+      "kwargs": {
+        "tscale": 5000.0
+      }
+    },
+    {
+      "label": "Tscale=15000",
+      "study": "sensitivity",
+      "kind": "cpo_dbo",
+      "kwargs": {
+        "tscale": 15000.0
+      }
+    },
+    {
+      "label": "Elite=1%",
+      "study": "sensitivity",
+      "kind": "cpo_dbo",
+      "kwargs": {
+        "elite_ratio": 0.01
+      }
+    },
+    {
+      "label": "Elite=5%",
+      "study": "sensitivity",
+      "kind": "cpo_dbo",
+      "kwargs": {
+        "elite_ratio": 0.05
+      }
+    },
+    {
+      "label": "2-opt=3",
+      "study": "sensitivity",
+      "kind": "cpo_dbo",
+      "kwargs": {
+        "twoopt_attempts": 3
+      }
+    }
+  ]
+}

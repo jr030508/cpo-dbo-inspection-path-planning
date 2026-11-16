@@ -1,0 +1,72 @@
+[
+  {
+    "label": "Obstacle-free",
+    "active_obstacles": [],
+    "total_dose": 229.45204345867208,
+    "total_length": 1120.3220493496538,
+    "astar_edges": 0,
+    "astar_dose_share_pct": 0.0,
+    "astar_length_share_pct": 0.0,
+    "matrix_build_seconds": 0.06418959982693195
+  },
+  {
+    "label": "1,2,3,4,5",
+    "active_obstacles": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "total_dose": 249.297792589173,
+    "total_length": 1217.8851637254324,
+    "astar_edges": 4,
+    "astar_dose_share_pct": 9.092333037216079,
+    "astar_length_share_pct": 10.76560436709343,
+    "matrix_build_seconds": 7.325297300238162
+  },
+  {
+    "label": "2,3,4,5",
+    "active_obstacles": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "total_dose": 213.64375553387535,
+    "total_length": 1054.6828255851854,
+    "astar_edges": 3,
+    "astar_dose_share_pct": 7.638461214491405,
+    "astar_length_share_pct": 8.148528013554245,
+    "matrix_build_seconds": 7.237169200088829
+  },
+  {
+    "label": "1,3,4,5",
+    "active_obstacles": [
+      1,
+      3,
+      4,
+      5
+    ],
+    "total_dose": 249.11151608752945,
+    "total_length": 1235.93484282893,
+    "astar_edges": 4,
+    "astar_dose_share_pct": 12.87453760678733,
+    "astar_length_share_pct": 14.057384689673771,
+    "matrix_build_seconds": 5.542919099796563
+  },
+  {
+    "label": "3,4,5",
+    "active_obstacles": [
+      3,
+      4,
+      5
+    ],
+    "total_dose": 213.7169244057156,
+    "total_length": 1053.829616027716,
+    "astar_edges": 2,
+    "astar_dose_share_pct": 6.067572893306522,
+    "astar_length_share_pct": 5.3734888578496935,
+    "matrix_build_seconds": 5.278683300130069
+  }
+]

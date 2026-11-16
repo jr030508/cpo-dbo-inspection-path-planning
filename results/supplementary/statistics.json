@@ -1,0 +1,377 @@
+{
+  "comparison": {
+    "friedman_chi2": 58.58571428571429,
+    "friedman_p": 8.717606632309943e-11,
+    "average_ranks": {
+      "CPO-DBO": 2.4,
+      "ACO-GA": 3.05,
+      "CPO": 3.1,
+      "IPSO": 3.65,
+      "GA-PSO": 4.1,
+      "DBO": 4.75,
+      "GA": 6.95
+    },
+    "pairwise_vs_cpo_dbo": [
+      {
+        "reference": "CPO-DBO",
+        "comparator": "CPO",
+        "mean_difference_comparator_minus_reference": 2.6860634346945034,
+        "bootstrap_95_ci": [
+          -1.414895225834157,
+          7.0100371313246645
+        ],
+        "wilcoxon_statistic": 80.0,
+        "wilcoxon_p": 0.36827659606933594,
+        "rank_biserial": 0.23809523809523808,
+        "reference_wins": 12,
+        "ties": 0,
+        "reference_losses": 8,
+        "holm_p": 0.6976203918457031
+      },
+      {
+        "reference": "CPO-DBO",
+        "comparator": "DBO",
+        "mean_difference_comparator_minus_reference": 12.536030693149481,
+        "bootstrap_95_ci": [
+          7.805695679218555,
+          17.160468408945288
+        ],
+        "wilcoxon_statistic": 9.0,
+        "wilcoxon_p": 6.29425048828125e-05,
+        "rank_biserial": 0.9142857142857143,
+        "reference_wins": 18,
+        "ties": 0,
+        "reference_losses": 2,
+        "holm_p": 0.0003147125244140625
+      },
+      {
+        "reference": "CPO-DBO",
+        "comparator": "GA",
+        "mean_difference_comparator_minus_reference": 42.15682821233317,
+        "bootstrap_95_ci": [
+          36.42054912773493,
+          47.597155288844405
+        ],
+        "wilcoxon_statistic": 0.0,
+        "wilcoxon_p": 1.9073486328125e-06,
+        "rank_biserial": 1.0,
+        "reference_wins": 20,
+        "ties": 0,
+        "reference_losses": 0,
+        "holm_p": 1.1444091796875e-05
+      },
+      {
+        "reference": "CPO-DBO",
+        "comparator": "IPSO",
+        "mean_difference_comparator_minus_reference": 4.642147137501692,
+        "bootstrap_95_ci": [
+          0.3134874328559004,
+          9.109907953833186
+        ],
+        "wilcoxon_statistic": 53.0,
+        "wilcoxon_p": 0.05316925048828125,
+        "rank_biserial": 0.49523809523809526,
+        "reference_wins": 15,
+        "ties": 0,
+        "reference_losses": 5,
+        "holm_p": 0.15950775146484375
+      },
+      {
+        "reference": "CPO-DBO",
+        "comparator": "GA-PSO",
+        "mean_difference_comparator_minus_reference": 6.34286266766004,
+        "bootstrap_95_ci": [
+          1.5745536444403034,
+          10.394179674258131
+        ],
+        "wilcoxon_statistic": 36.0,
+        "wilcoxon_p": 0.00830841064453125,
+        "rank_biserial": 0.6571428571428571,
+        "reference_wins": 15,
+        "ties": 0,
+        "reference_losses": 5,
+        "holm_p": 0.033233642578125
+      },
+      {
+        "reference": "CPO-DBO",
+        "comparator": "ACO-GA",
+        "mean_difference_comparator_minus_reference": 3.3574138908131856,
+        "bootstrap_95_ci": [
+          -2.435674796262554,
+          9.142707560921357
+        ],
+        "wilcoxon_statistic": 79.0,
+        "wilcoxon_p": 0.34881019592285156,
+        "rank_biserial": 0.24761904761904763,
+        "reference_wins": 12,
+        "ties": 0,
+        "reference_losses": 8,
+        "holm_p": 0.6976203918457031
+      }
+    ]
+  },
+  "ablation": [
+    {
+      "reference": "CPO-DBO",
+      "comparator": "No 2-opt",
+      "mean_difference_comparator_minus_reference": 6.437477104080941,
+      "bootstrap_95_ci": [
+        2.6994660547937697,
+        10.169148310572725
+      ],
+      "wilcoxon_statistic": 33.0,
+      "wilcoxon_p": 0.005580902099609375,
+      "rank_biserial": 0.6857142857142857,
+      "reference_wins": 16,
+      "ties": 0,
+      "reference_losses": 4,
+      "exact_sign_flip_p": 0.00449371337890625,
+      "holm_sign_flip_p": 0.0269622802734375
+    },
+    {
+      "reference": "CPO-DBO",
+      "comparator": "Fixed probabilities",
+      "mean_difference_comparator_minus_reference": -1.7038778539536792,
+      "bootstrap_95_ci": [
+        -6.232123745368818,
+        2.59248199605162
+      ],
+      "wilcoxon_statistic": 89.0,
+      "wilcoxon_p": 0.5705966949462891,
+      "rank_biserial": -0.1523809523809524,
+      "reference_wins": 10,
+      "ties": 0,
+      "reference_losses": 10,
+      "exact_sign_flip_p": 0.4794349670410156,
+      "holm_sign_flip_p": 0.8997859954833984
+    },
+    {
+      "reference": "CPO-DBO",
+      "comparator": "No group bias",
+      "mean_difference_comparator_minus_reference": 4.784117821112398,
+      "bootstrap_95_ci": [
+        -0.5878320620741901,
+        10.28739327187107
+      ],
+      "wilcoxon_statistic": 63.0,
+      "wilcoxon_p": 0.1230926513671875,
+      "rank_biserial": 0.4,
+      "reference_wins": 13,
+      "ties": 0,
+      "reference_losses": 7,
+      "exact_sign_flip_p": 0.11072731018066406,
+      "holm_sign_flip_p": 0.44290924072265625
+    },
+    {
+      "reference": "CPO-DBO",
+      "comparator": "No elitism",
+      "mean_difference_comparator_minus_reference": 2.342012722964742,
+      "bootstrap_95_ci": [
+        -2.192870142485054,
+        6.677299760976968
+      ],
+      "wilcoxon_statistic": 78.0,
+      "wilcoxon_p": 0.3299827575683594,
+      "rank_biserial": 0.2571428571428571,
+      "reference_wins": 12,
+      "ties": 0,
+      "reference_losses": 8,
+      "exact_sign_flip_p": 0.32376670837402344,
+      "holm_sign_flip_p": 0.8997859954833984
+    },
+    {
+      "reference": "CPO-DBO",
+      "comparator": "Swap-only mutation",
+      "mean_difference_comparator_minus_reference": 6.145772936841638,
+      "bootstrap_95_ci": [
+        2.271826507503805,
+        10.102473022229338
+      ],
+      "wilcoxon_statistic": 34.0,
+      "wilcoxon_p": 0.006389617919921875,
+      "rank_biserial": 0.6761904761904762,
+      "reference_wins": 16,
+      "ties": 0,
+      "reference_losses": 4,
+      "exact_sign_flip_p": 0.007946014404296875,
+      "holm_sign_flip_p": 0.039730072021484375
+    },
+    {
+      "reference": "CPO-DBO",
+      "comparator": "No personal-best guidance",
+      "mean_difference_comparator_minus_reference": -2.304842216425351,
+      "bootstrap_95_ci": [
+        -6.547917934264354,
+        1.69827382301643
+      ],
+      "wilcoxon_statistic": 83.0,
+      "wilcoxon_p": 0.4304332733154297,
+      "rank_biserial": -0.20952380952380953,
+      "reference_wins": 10,
+      "ties": 0,
+      "reference_losses": 10,
+      "exact_sign_flip_p": 0.2999286651611328,
+      "holm_sign_flip_p": 0.8997859954833984
+    }
+  ],
+  "sensitivity": [
+    {
+      "factor": "Population size",
+      "friedman_chi2": 1.3000000000000114,
+      "p": 0.5220457767610132
+    },
+    {
+      "factor": "Schedule scale",
+      "friedman_chi2": 3.6000000000000227,
+      "p": 0.16529888822158464
+    },
+    {
+      "factor": "Elite ratio",
+      "friedman_chi2": 0.700000000000017,
+      "p": 0.7046880897187074
+    },
+    {
+      "factor": "2-opt attempts",
+      "friedman_chi2": 16.30000000000001,
+      "p": 0.0002887353596282014
+    }
+  ],
+  "sensitivity_pairwise": [
+    {
+      "reference": "CPO-DBO",
+      "comparator": "M=200",
+      "mean_difference_comparator_minus_reference": -0.023349185319949582,
+      "bootstrap_95_ci": [
+        -4.450931983145498,
+        4.830397661544313
+      ],
+      "wilcoxon_statistic": 95.0,
+      "wilcoxon_p": 0.7285060882568359,
+      "rank_biserial": -0.09523809523809523,
+      "reference_wins": 9,
+      "ties": 0,
+      "reference_losses": 11,
+      "factor": "Population size",
+      "holm_p_within_factor": 0.8608665466308594
+    },
+    {
+      "reference": "CPO-DBO",
+      "comparator": "M=600",
+      "mean_difference_comparator_minus_reference": 1.8876760330283475,
+      "bootstrap_95_ci": [
+        -2.3778266341111634,
+        6.2101430942888065
+      ],
+      "wilcoxon_statistic": 83.0,
+      "wilcoxon_p": 0.4304332733154297,
+      "rank_biserial": 0.20952380952380953,
+      "reference_wins": 12,
+      "ties": 0,
+      "reference_losses": 8,
+      "factor": "Population size",
+      "holm_p_within_factor": 0.8608665466308594
+    },
+    {
+      "reference": "CPO-DBO",
+      "comparator": "Tscale=5000",
+      "mean_difference_comparator_minus_reference": 2.852213138615613,
+      "bootstrap_95_ci": [
+        -1.1906184467273329,
+        7.129408210802176
+      ],
+      "wilcoxon_statistic": 73.0,
+      "wilcoxon_p": 0.24548721313476562,
+      "rank_biserial": 0.3047619047619048,
+      "reference_wins": 13,
+      "ties": 0,
+      "reference_losses": 7,
+      "factor": "Schedule scale",
+      "holm_p_within_factor": 0.49097442626953125
+    },
+    {
+      "reference": "CPO-DBO",
+      "comparator": "Tscale=15000",
+      "mean_difference_comparator_minus_reference": -2.3059424744972885,
+      "bootstrap_95_ci": [
+        -6.199156460061589,
+        1.5499060302815606
+      ],
+      "wilcoxon_statistic": 75.0,
+      "wilcoxon_p": 0.2773551940917969,
+      "rank_biserial": -0.2857142857142857,
+      "reference_wins": 7,
+      "ties": 0,
+      "reference_losses": 13,
+      "factor": "Schedule scale",
+      "holm_p_within_factor": 0.49097442626953125
+    },
+    {
+      "reference": "CPO-DBO",
+      "comparator": "Elite=1%",
+      "mean_difference_comparator_minus_reference": 1.18223962379233,
+      "bootstrap_95_ci": [
+        -3.957948586821906,
+        6.375852916882474
+      ],
+      "wilcoxon_statistic": 98.0,
+      "wilcoxon_p": 0.8123550415039062,
+      "rank_biserial": 0.06666666666666667,
+      "reference_wins": 10,
+      "ties": 0,
+      "reference_losses": 10,
+      "factor": "Elite ratio",
+      "holm_p_within_factor": 0.9047508239746094
+    },
+    {
+      "reference": "CPO-DBO",
+      "comparator": "Elite=5%",
+      "mean_difference_comparator_minus_reference": 1.7185173909498075,
+      "bootstrap_95_ci": [
+        -3.1162062007071656,
+        6.30612592010976
+      ],
+      "wilcoxon_statistic": 84.0,
+      "wilcoxon_p": 0.4523754119873047,
+      "rank_biserial": 0.2,
+      "reference_wins": 13,
+      "ties": 0,
+      "reference_losses": 7,
+      "factor": "Elite ratio",
+      "holm_p_within_factor": 0.9047508239746094
+    },
+    {
+      "reference": "CPO-DBO",
+      "comparator": "No 2-opt",
+      "mean_difference_comparator_minus_reference": 6.437477104080941,
+      "bootstrap_95_ci": [
+        2.6727314932131296,
+        10.18244236785275
+      ],
+      "wilcoxon_statistic": 33.0,
+      "wilcoxon_p": 0.005580902099609375,
+      "rank_biserial": 0.6857142857142857,
+      "reference_wins": 16,
+      "ties": 0,
+      "reference_losses": 4,
+      "factor": "2-opt attempts",
+      "holm_p_within_factor": 0.01116180419921875
+    },
+    {
+      "reference": "CPO-DBO",
+      "comparator": "2-opt=3",
+      "mean_difference_comparator_minus_reference": -2.588866744639725,
+      "bootstrap_95_ci": [
+        -6.93366648779517,
+        1.543073162435351
+      ],
+      "wilcoxon_statistic": 79.0,
+      "wilcoxon_p": 0.34881019592285156,
+      "rank_biserial": -0.24761904761904763,
+      "reference_wins": 7,
+      "ties": 0,
+      "reference_losses": 13,
+      "factor": "2-opt attempts",
+      "holm_p_within_factor": 0.34881019592285156
+    }
+  ]
+}

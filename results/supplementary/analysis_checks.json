@@ -1,0 +1,12 @@
+{
+  "run_count": 4000,
+  "expected_run_count": 4000,
+  "objective_recalculation_max_error": 0.0,
+  "all_variant_instance_counts_are_10": true,
+  "figures": [
+    "Fig19_algorithm_comparison.png",
+    "Fig20_budget_normalized_convergence.png",
+    "Fig21_ablation_effects.png",
+    "Fig22_parameter_sensitivity.png"
+  ]
+}
