@@ -24,11 +24,22 @@ provenance only — **do not use them in the manuscript**.
 | 图14 Five representative seed convergence curves | `fig14_top5_seed_convergence.jpg` | `fig14_top5_seed_convergence.fig` |
 | 图20 51-node / 7-source / 5-obstacle scene | `fig20_scene_51nodes_7sources_5obstacles.jpg` | `fig20_scene_51nodes.fig` |
 | 图21 Optimal path: (a) free (b) mixed obstacle model | `fig21_free_vs_obstacle_mixed_model.png`, panels `fig21_panel_a_free.jpg`, `fig21_panel_b_obstacle_mixed.jpg` | `fig21_panel_a_free.fig`, `fig21_panel_b_obstacle_mixed.fig` |
+| 图22 A*-edge share in the mixed obstacle model (exposure-cost / distance) | `fig22_los_a_edge_proportion.jpg` | `fig22_los_a_edge_proportion.fig` |
 | 图23 Obstacle-retention combinations (a)1-5 (b)2-5 (c)1,3-5 (d)3-5 | `fig23_obstacle_retention_combinations.png` + per-panel `fig23_panel_*.jpg` | `fig23_panel_a_retain_12345.fig` … `fig23_panel_d_retain_345.fig` |
 
-Figures 5, 7, 9, 12, 13, 15–19, 22 were either already correctly labelled or
+Figures 5, 7, 9, 12, 13, 15–19 were either already correctly labelled or
 are produced by the Python analysis pipeline (`python/analyze_*.py`, outputs
 under `figures/revision/` and `figures/supplementary/`).
+
+## Known pending label fixes (found 2026-11-17 evening)
+
+1. 图22 `fig22_los_a_edge_proportion.jpg`: first x-axis category label reads
+   **"Exposure-cost Proportiom"** — typo, should be "Proportion".
+   Fix in the `.fig` source and re-export.
+2. 图1 flowchart (`流程图.png`): three legacy labels remain —
+   "Mean Optimal Dose" → "Mean Optimal Exposure Cost",
+   "Dose Decomposition" → "Exposure-cost Decomposition",
+   "Low-dose inspection" → "Low-exposure inspection".
 
 ## Label fixes (resolved 2026-11-17)
 
