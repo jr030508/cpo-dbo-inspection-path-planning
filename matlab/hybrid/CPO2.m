@@ -111,7 +111,7 @@ end
 doseMatrix(logical(eye(numNodes))) = 0;
 
 %% ===== 输出完整剂量矩阵 =====
-fprintf('\n===== 节点间有效剂量矩阵 (单位: μSv) =====\n');
+fprintf('\n===== 节点间暴露代价矩阵 (单位: a.u.) =====\n');
 fprintf('       ');
 for j = 1:numNodes
     fprintf('%6d', j);
@@ -131,7 +131,7 @@ for i = 1:numNodes
 end
 
 csvwrite('dose_matrix_case2.csv', doseMatrix);
-fprintf('\n剂量矩阵已保存到文件: dose_matrix_case2.csv\n');
+fprintf('\n暴露代价矩阵已保存到文件: dose_matrix_case2.csv\n');
 
 %% ===================== CPO 参数 =============================
 M = 400;                     % 种群规模
@@ -255,7 +255,7 @@ for iter = 1:maxIter
     convergence(iter) = gBestFitness;
 
     if mod(iter, 50) == 0
-        fprintf('CPO迭代 %d/%d, 当前最优剂量: %.4f μSv | (pD=%.2f,pA=%.2f,pE=%.2f)\n',...
+        fprintf('CPO迭代 %d/%d, 当前最优暴露代价: %.4f a.u. | (pD=%.2f,pA=%.2f,pE=%.2f)\n',...
             iter, maxIter, gBestFitness, defenseProb, attackProb, escapeProb);
     end
 end
@@ -265,10 +265,10 @@ end
 figure('Name', '算法收敛曲线', 'Position', [100, 100, 800, 400]);
 plot(convergence, 'LineWidth', 2);
 xlabel('迭代次数');
-ylabel('最优剂量 (μSv)');
+ylabel('最优暴露代价 (a.u.)');
 title('冠豪猪优化(CPO)收敛曲线 (Permutation-safe, 案例2)');
 grid on;
-legend('最优剂量', 'Location', 'northeast');
+legend('最优暴露代价', 'Location', 'northeast');
 
 %% ===== 节点与放射源分布 =====
 figure('Name', '节点与放射源分布', 'Position', [100, 100, 900, 700]);
@@ -314,7 +314,7 @@ xlim([0 80]); ylim([0 80]);
 set(gca, 'FontSize', 12);
 xlabel('X坐标 (m)', 'FontSize', 14);
 ylabel('Y坐标 (m)', 'FontSize', 14);
-title(sprintf('案例2最优路径规划 (总剂量: %.4f μSv)', gBestFitness), 'FontSize', 16);
+title(sprintf('案例2最优路径规划 (总暴露代价: %.4f a.u.)', gBestFitness), 'FontSize', 16);
 
 scatter(xCoords, yCoords, 200, 'filled', 'MarkerFaceColor', [0.1, 0.5, 0.8], ...
     'MarkerEdgeColor', [0, 0.2, 0.4], 'LineWidth', 1.5);
@@ -363,7 +363,7 @@ set(gca, 'GridColor', [0.85, 0.85, 0.85], 'GridAlpha', 0.7);
 hold off;
 
 %% ===== 剂量热力图 =====
-figure('Name', '节点间有效剂量热力图', 'Position', [100, 100, 1000, 850]);
+figure('Name', '节点间暴露代价热力图', 'Position', [100, 100, 1000, 850]);
 
 colors = [0.0, 0.0, 1.0;
           0.0, 1.0, 0.0;
@@ -376,7 +376,7 @@ customMap = interp1(colorPos, colors, linspace(0,1,256));
 imagesc(doseMatrix);
 colormap(customMap);
 c = colorbar;
-c.Label.String = '有效剂量 (μSv)';
+c.Label.String = '暴露代价 (a.u.)';
 c.Label.FontSize = 12;
 c.FontSize = 11;
 
@@ -384,7 +384,7 @@ set(gca, 'XTick', 1:numNodes, 'YTick', 1:numNodes, ...
          'FontSize', 10, 'XAxisLocation', 'top');
 xlabel('目标节点', 'FontSize', 14, 'FontWeight', 'bold');
 ylabel('起始节点', 'FontSize', 14, 'FontWeight', 'bold');
-title('节点间有效剂量热力图 (案例2)', 'FontSize', 16, 'FontWeight', 'bold');
+title('节点间暴露代价矩阵热力图 (案例2)', 'FontSize', 16, 'FontWeight', 'bold');
 
 hold on;
 for i = 1:numNodes+1
@@ -412,7 +412,7 @@ for k = 1:size(hotSpots, 1)
 end
 
 annotation('textbox', [0.15, 0.02, 0.7, 0.05], ...
-           'String', '注: 红色虚线框表示高辐射路径，数值仅显示大于100μSv的剂量', ...
+           'String', '注: 红色虚线框表示高辐射路径，数值仅显示大于100a.u.的剂量', ...
            'FontSize', 11, 'EdgeColor', 'none', 'HorizontalAlignment', 'center');
 
 axis square;
@@ -466,7 +466,7 @@ hold off;
 %% 输出结果
 fprintf('\n===== 案例2复现结果 (CPO Permutation-safe) =====\n');
 fprintf('最优路径: %s\n', strjoin(cellstr(num2str(gBestPath')), '->'));
-fprintf('最优路径总剂量: %.4f μSv\n', gBestFitness);
+fprintf('最优路径总暴露代价: %.4f a.u.\n', gBestFitness);
 fprintf('算法总迭代次数: %d\n', maxIter);
 
 %% ===================== 函数区 ==============================

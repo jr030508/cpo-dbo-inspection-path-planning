@@ -32,7 +32,7 @@ yCoords = nodeData(:,3);
 numNodes = length(nodeIDs);
 
 %% 有效剂量数据（表2）
-% 论文中表2: 14个节点间的有效剂量(μSv)
+% 论文中表2: 14个节点间的暴露代价(a.u.)
 doseMatrix = [
 999, 4.88, 13.81, 39.27, 9.24, 327.36, 29.92, 28.4, 682.79, 6.08, 13.62, 6.83, 13.97, 10.04;
 4.88, 999, 8.95, 21.03, 6.22, 24.66, 17.79, 35.36, 37.13, 11.77, 21.83, 7, 10.5, 20.61;
@@ -110,7 +110,7 @@ for iter = 1:maxChaosIter
     convergence(iter) = gBestFitness;
     
     % 显示迭代信息
-    fprintf('混沌迭代 %d/%d, 当前最优剂量: %.2f μSv\n', iter, maxChaosIter, gBestFitness);
+    fprintf('混沌迭代 %d/%d, 当前最优暴露代价: %.2f a.u.\n', iter, maxChaosIter, gBestFitness);
 end
 
 %% PSO优化阶段（论文步骤4-5）
@@ -154,7 +154,7 @@ for iter = 1:maxPSOIter
     
     % 显示迭代信息
     if mod(iter, 50) == 0
-        fprintf('PSO迭代 %d/%d, 当前最优剂量: %.2f μSv\n', iter, maxPSOIter, gBestFitness);
+        fprintf('PSO迭代 %d/%d, 当前最优暴露代价: %.2f a.u.\n', iter, maxPSOIter, gBestFitness);
     end
 end
 
@@ -163,11 +163,11 @@ end
 figure('Name', '算法收敛曲线', 'Position', [100, 100, 800, 400]);
 plot(convergence, 'LineWidth', 2);
 xlabel('迭代次数');
-ylabel('最优剂量 (μSv)');
+ylabel('最优暴露代价 (a.u.)');
 title('混沌PSO收敛曲线');
 grid on;
 xline(maxChaosIter, 'r--', 'LineWidth', 1.5, 'Label', '混沌优化结束');
-legend('最优剂量', 'Location', 'northeast');
+legend('最优暴露代价', 'Location', 'northeast');
 
 % 绘制最优路径
 figure('Name', '最优路径规划', 'Position', [100, 100, 800, 600]);
@@ -193,7 +193,7 @@ for i = 1:(length(gBestPath)-1)
 end
 
 % 添加标签和标题
-title(sprintf('最优路径规划 (总剂量: %.2f μSv)', gBestFitness));
+title(sprintf('最优路径规划 (总暴露代价: %.2f a.u.)', gBestFitness));
 xlabel('X坐标 (m)');
 ylabel('Y坐标 (m)');
 legend('普通节点', '高辐射节点', '路径', 'Location', 'best');
@@ -202,11 +202,11 @@ axis equal;
 hold off;
 
 % 绘制剂量热力图
-figure('Name','节点间有效剂量热力图','Position',[100,100,800,600]);
+figure('Name','节点间暴露代价热力图','Position',[100,100,800,600]);
 imagesc(doseMatrix);
 colormap(jet);
 colorbar;
-title('节点间有效剂量热力图 (μSv)');
+title('节点间暴露代价矩阵热力图 (a.u.)');
 xlabel('目标节点');
 ylabel('起始节点');
 set(gca,'XTick',1:numNodes,'YTick',1:numNodes);
@@ -215,7 +215,7 @@ axis square;
 %% 输出结果
 fprintf('\n===== 案例1复现结果 =====\n');
 fprintf('最优路径: %s\n', strjoin(cellstr(num2str(gBestPath')), '->'));
-fprintf('最优路径总剂量: %.2f μSv\n', gBestFitness);
+fprintf('最优路径总暴露代价: %.2f a.u.\n', gBestFitness);
 fprintf('算法总迭代次数: %d (混沌优化:%d + PSO:%d)\n',...
     maxChaosIter+maxPSOIter, maxChaosIter, maxPSOIter);
 

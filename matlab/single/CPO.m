@@ -142,7 +142,7 @@ end
 doseMatrix(logical(eye(numNodes))) = 0;
 
 %% ===== 输出完整剂量矩阵 =====
-fprintf('\n===== 节点间有效剂量矩阵 (单位: μSv) =====\n');
+fprintf('\n===== 节点间暴露代价矩阵 (单位: a.u.) =====\n');
 fprintf('       ');
 for j = 1:numNodes
     fprintf('%6d', j);
@@ -251,7 +251,7 @@ for iter = 1:maxIter
     
     % 显示迭代信息
     if mod(iter, 50) == 0
-        fprintf('CPO迭代 %d/%d, 当前最优剂量: %.2f μSv\n', iter, maxIter, gBestFitness);
+        fprintf('CPO迭代 %d/%d, 当前最优暴露代价: %.2f a.u.\n', iter, maxIter, gBestFitness);
     end
 end
 
@@ -260,10 +260,10 @@ end
 figure('Name', '算法收敛曲线', 'Position', [100, 100, 800, 400]);
 plot(convergence, 'LineWidth', 2);
 xlabel('迭代次数');
-ylabel('最优剂量 (μSv)');
+ylabel('最优暴露代价 (a.u.)');
 title('冠豪猪优化(CPO)收敛曲线 (案例2)');
 grid on;
-legend('最优剂量', 'Location', 'northeast');
+legend('最优暴露代价', 'Location', 'northeast');
 
 %% ===== 增强节点图 =====
 figure('Name', '节点与放射源分布', 'Position', [100, 100, 900, 700]);
@@ -324,7 +324,7 @@ ylim([0 200]);
 set(gca, 'FontSize', 12);
 xlabel('X坐标 (m)', 'FontSize', 14);
 ylabel('Y坐标 (m)', 'FontSize', 14);
-title(sprintf('案例3最优路径规划 (总剂量: %.2f μSv)', gBestFitness), 'FontSize', 16);
+title(sprintf('案例3最优路径规划 (总暴露代价: %.2f a.u.)', gBestFitness), 'FontSize', 16);
 
 % 绘制节点
 scatter(xCoords, yCoords, 100, 'filled', 'MarkerFaceColor', [0.1, 0.5, 0.8], ...
@@ -384,7 +384,7 @@ set(gca, 'GridColor', [0.85, 0.85, 0.85], 'GridAlpha', 0.7);
 hold off;
 
 %% ===== 增强型剂量热力图 =====
-figure('Name', '节点间有效剂量热力图', 'Position', [100, 100, 1000, 850]);
+figure('Name', '节点间暴露代价热力图', 'Position', [100, 100, 1000, 850]);
 
 % 创建自定义颜色映射
 colors = [0.0, 0.0, 1.0;   % 蓝色 (低辐射)
@@ -399,7 +399,7 @@ customMap = interp1(colorPos, colors, linspace(0,1,256));
 h = imagesc(doseMatrix);
 colormap(customMap);
 c = colorbar;
-c.Label.String = '有效剂量 (μSv)';
+c.Label.String = '暴露代价 (a.u.)';
 c.Label.FontSize = 12;
 c.FontSize = 11;
 
@@ -408,7 +408,7 @@ set(gca, 'XTick', 1:numNodes, 'YTick', 1:numNodes, ...
          'FontSize', 8, 'XAxisLocation', 'top');
 xlabel('目标节点', 'FontSize', 14, 'FontWeight', 'bold');
 ylabel('起始节点', 'FontSize', 14, 'FontWeight', 'bold');
-title('节点间有效剂量热力图 (案例3: 51节点)', 'FontSize', 16, 'FontWeight', 'bold');
+title('节点间暴露代价矩阵热力图 (案例3: 51节点)', 'FontSize', 16, 'FontWeight', 'bold');
 
 % 添加网格线
 hold on;
@@ -512,7 +512,7 @@ hold off;
 %% 输出结果
 fprintf('\n===== 案例2复现结果 (CPO算法) =====\n');
 fprintf('最优路径: %s\n', strjoin(cellstr(num2str(gBestPath')), '->'));
-fprintf('最优路径总剂量: %.2f μSv\n', gBestFitness);
+fprintf('最优路径总暴露代价: %.2f a.u.\n', gBestFitness);
 fprintf('算法总迭代次数: %d\n', maxIter);
 
 %% CPO行为函数

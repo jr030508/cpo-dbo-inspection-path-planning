@@ -145,7 +145,7 @@ grayFace = [0.20 0.20 0.20];
 
 %% ===================== 4) 图1：多算法并排箱线图+散点（方案B：按算法着色） =====================
 makeMultiAlgoBoxScatter_plain_colorB(All, algoList, numInstances, 'bestDoseRuns', ...
-    '最优总剂量（\muSv）', '多算法对比：最优总剂量（箱线图+散点）', ...
+    '最优总暴露代价（a.u.）', '多算法对比：最优总暴露代价（箱线图+散点）', ...
     algoLabels, fontName, fsAxis, fsTitle, lwBox, lwMedian, jit, mkSize, mkLW, grayEdge, grayFace);
 
 makeMultiAlgoBoxScatter_plain_colorB(All, algoList, numInstances, 'bestLenRuns', ...
@@ -189,7 +189,7 @@ end
 
 if hasAnyNoise
     makeNoiseScatterFit(All, algoList, numInstances, 'bestDoseRuns', ...
-        '噪声水平（NoiseLevel）', 'BestDose（\muSv）', '噪声敏感性：BestDose 与 NoiseLevel 的关系', ...
+        '噪声水平（NoiseLevel）', 'BestDose（a.u.）', '噪声敏感性：BestDose 与 NoiseLevel 的关系', ...
         fontName, fsAxis, fsTitle);
 
     makeNoiseScatterFit(All, algoList, numInstances, 'timeRuns', ...
@@ -321,7 +321,7 @@ for a = 1:A
 end
 
 xlabel(axMain, '迭代次数','FontName',fontName,'FontSize',fsAxis);
-ylabel(axMain, '最优剂量（\muSv）','FontName',fontName,'FontSize',fsAxis);
+ylabel(axMain, '最优暴露代价（a.u.）','FontName',fontName,'FontSize',fsAxis);
 title(axMain, sprintf('多算法收敛对比（均值±1σ）：%d个扰动实例（对齐到 minIter=%d）', numInstances, minIter), ...
     'FontName',fontName,'FontSize',fsTitle,'FontWeight','bold');
 set(axMain,'FontName',fontName,'FontSize',fsAxis,'LineWidth',1.2);
@@ -440,7 +440,7 @@ for a = 1:A
     plot(xx, f, 'LineWidth', 2.2, 'Color', cols(a,:));
 end
 
-xlabel('BestDose（\muSv）','FontName',fontName,'FontSize',fsAxis);
+xlabel('BestDose（a.u.）','FontName',fontName,'FontSize',fsAxis);
 ylabel('ECDF：P(BestDose \le x)','FontName',fontName,'FontSize',fsAxis);
 title(sprintf('ECDF对比：%d个扰动实例 BestDose 分布', numInstances), ...
     'FontName',fontName,'FontSize',fsTitle,'FontWeight','bold');
@@ -476,7 +476,7 @@ for a = 1:A
 end
 
 xlabel('FirstHitIter（迭代步，越小越快）','FontName',fontName,'FontSize',fsAxis);
-ylabel('BestDose（\muSv，越小越好）','FontName',fontName,'FontSize',fsAxis);
+ylabel('BestDose（a.u.，越小越好）','FontName',fontName,'FontSize',fsAxis);
 title(sprintf('速度-质量权衡：FirstHitIter 与 BestDose（%d个实例）', numInstances), ...
     'FontName',fontName,'FontSize',fsTitle,'FontWeight','bold');
 set(gca,'FontName',fontName,'FontSize',fsAxis,'LineWidth',1.2);
@@ -555,7 +555,7 @@ bar(X+bw,  mx,  bw);
 
 set(gca,'XTick',1:A,'XTickLabel',cellfun(@(s)char(s.name), algoList,'UniformOutput',false));
 xlabel('算法','FontName',fontName,'FontSize',fsAxis);
-ylabel('BestDose（\muSv）','FontName',fontName,'FontSize',fsAxis);
+ylabel('BestDose（a.u.）','FontName',fontName,'FontSize',fsAxis);
 title(sprintf('最差情形风险对比：P90 / P95 / Max（%d个扰动实例）', numInstances), ...
     'FontName',fontName,'FontSize',fsTitle,'FontWeight','bold');
 set(gca,'FontName',fontName,'FontSize',fsAxis,'LineWidth',1.2);
@@ -861,7 +861,7 @@ end
 txt{end+1} = ' ';
 
 txt{end+1} = '二、按不同指标排序';
-txt{end+1} = sprintf('1) 最优总剂量均值（越小越好）：%s', joinRankText(Tsummary.Algo, Tsummary.Dose_mean, idxDose));
+txt{end+1} = sprintf('1) 最优总暴露代价均值（越小越好）：%s', joinRankText(Tsummary.Algo, Tsummary.Dose_mean, idxDose));
 txt{end+1} = sprintf('2) 运行时间均值（越小越好）：%s', joinRankText(Tsummary.Algo, Tsummary.Time_mean, idxTime));
 txt{end+1} = sprintf('3) 路径总距离均值（越小越好）：%s', joinRankText(Tsummary.Algo, Tsummary.Len_mean, idxLen));
 txt{end+1} = sprintf('4) FirstHitIter均值（越小越快）：%s', joinRankText(Tsummary.Algo, firstHitMean, idxHit));
@@ -883,13 +883,13 @@ bestLenAlgo  = string(Tsummary.Algo(idxLen(1)));
 if doCompositeScore
     bestCompAlgo = string(Tsummary.Algo(idxScore(1)));
     txt{end+1} = '五、自动总结';
-    txt{end+1} = sprintf(['从20个扰动实例的统计结果来看，%s在最优总剂量均值方面表现最佳，' ...
+    txt{end+1} = sprintf(['从20个扰动实例的统计结果来看，%s在最优总暴露代价均值方面表现最佳，' ...
         '%s在运行时间方面占优，%s在路径总距离方面表现最佳。综合考虑剂量、时间和距离后，' ...
         '%s的综合评分最低，可视为总体表现最优的算法。'], ...
         bestDoseAlgo, bestTimeAlgo, bestLenAlgo, bestCompAlgo);
 else
     txt{end+1} = '五、自动总结';
-    txt{end+1} = sprintf(['从20个扰动实例的统计结果来看，%s在最优总剂量均值方面表现最佳，' ...
+    txt{end+1} = sprintf(['从20个扰动实例的统计结果来看，%s在最优总暴露代价均值方面表现最佳，' ...
         '%s在运行时间方面占优，%s在路径总距离方面表现最佳。'], ...
         bestDoseAlgo, bestTimeAlgo, bestLenAlgo);
 end

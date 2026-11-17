@@ -155,7 +155,7 @@ timeSorted    = timeRuns(instSorted);
 noiseSorted   = instNoiseLevel(instSorted);
 fpSorted      = sceneFP(instSorted);
 
-fprintf('\n================= CPO：按最优剂量排序（从低到高）=================\n');
+fprintf('\n================= CPO：按最优暴露代价排序（从低到高）=================\n');
 fprintf('Rank | Inst | BestDose | BestLen | FirstHit | LastImprove | Time(s) | Noise | sceneFP\n');
 for r = 1:K
     fprintf('%4d | %4d | %8.4f | %7.1f | %8d | %11d | %7.3f | %.3f | %.6f\n', ...
@@ -209,7 +209,7 @@ grayEdge = [0.25 0.25 0.25];
 grayFace = [0.20 0.20 0.20];
 
 plotBoxScatter(bestDoseRuns, isTop, Ktop, ...
-    '最优总剂量（\muSv）', sprintf('CPO：20个扰动实例最优总剂量（箱线图+散点，Top-%d高亮）', Ktop), ...
+    '最优总暴露代价（a.u.）', sprintf('CPO：20个扰动实例最优总暴露代价（箱线图+散点，Top-%d高亮）', Ktop), ...
     fontName, fsAxis, fsTitle, lwBox, lwMedian, jit, mkSize, mkLW, grayEdge, grayFace, topColor);
 
 plotBoxScatter(bestLenRuns, isTop, Ktop, ...
@@ -233,7 +233,7 @@ hMean = plot(iters, convMean, '-', 'LineWidth', lwMean);
 hMean.Color = meanColor;
 
 xlabel('迭代次数','FontName',fontName,'FontSize',fsAxis);
-ylabel('最优剂量（\muSv）','FontName',fontName,'FontSize',fsAxis);
+ylabel('最优暴露代价（a.u.）','FontName',fontName,'FontSize',fsAxis);
 title(sprintf('CPO 收敛曲线（均值±1标准差）：%d个扰动实例（maxIter=%d）', K, maxIter), ...
     'FontName',fontName,'FontSize',fsTitle,'FontWeight','bold');
 set(gca,'FontName',fontName,'FontSize',fsAxis,'LineWidth',1.2);
@@ -248,8 +248,8 @@ for kk = 1:Ktop
     plot(iters, convAll(:,rInst), 'LineWidth', lwCurve, 'Color', cols(kk,:));
 end
 xlabel('迭代次数','FontName',fontName,'FontSize',fsAxis);
-ylabel('最优剂量（\muSv）','FontName',fontName,'FontSize',fsAxis);
-title(sprintf('CPO：Top-%d 最优实例收敛曲线叠加（按最优剂量排序）', Ktop), ...
+ylabel('最优暴露代价（a.u.）','FontName',fontName,'FontSize',fsAxis);
+title(sprintf('CPO：Top-%d 最优实例收敛曲线叠加（按最优暴露代价排序）', Ktop), ...
     'FontName',fontName,'FontSize',fsTitle,'FontWeight','bold');
 set(gca,'FontName',fontName,'FontSize',fsAxis,'LineWidth',1.2);
 

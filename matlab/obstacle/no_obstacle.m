@@ -369,7 +369,7 @@ figure('Name','最优巡检路径（无障碍-精细模型+新CPO-DBO）','Posit
 hold on; axis equal; grid on;
 xlim([xMin xMax]); ylim([yMin yMax]);
 xlabel('X坐标'); ylabel('Y坐标');
-title(sprintf('最优巡检回路（总剂量=%.3f，总距离=%.1f，全部LOS，\\epsilon=%.1e）', ...
+title(sprintf('最优巡检回路（总暴露代价=%.3f，总距离=%.1f，全部LOS，\\epsilon=%.1e）', ...
     totalDose, totalLen, epsLen));
 
 contourf(XX, YY, radGrid, 30, 'LineStyle','none');
@@ -416,9 +416,9 @@ figure('Name','剂量分解条形图（无障碍-精细模型）','Position',[12
 bar(edgeDoseList);
 grid on;
 xlabel('回路边序号');
-ylabel('该边剂量贡献');
+ylabel('该边暴露代价贡献');
 title('最优巡检回路的剂量分解（逐边贡献，全部为LOS边）');
-legend({'边剂量'}, 'Location','northeast');
+legend({'边暴露代价'}, 'Location','northeast');
 
 %% ===================== 7) Save MAT result =====================
 resultFile = 'result_case3_LOS_refined.mat';

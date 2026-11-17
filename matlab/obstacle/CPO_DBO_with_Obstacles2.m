@@ -407,7 +407,7 @@ figure('Name','最优巡检路径（混合边+新CPO-DBO）','Position',[100,100
 hold on; axis equal; grid on;
 xlim([xMin xMax]); ylim([yMin yMax]);
 xlabel('X坐标'); ylabel('Y坐标');
-title(sprintf('最优巡检回路（总剂量=%.3f，总距离=%.1f，A*边=%d，\\epsilon=%.1e）', ...
+title(sprintf('最优巡检回路（总暴露代价=%.3f，总距离=%.1f，A*边=%d，\\epsilon=%.1e）', ...
     totalDose, totalLen, nAstarEdges, epsLen));
 
 contourf(XX, YY, radGrid, 30, 'LineStyle','none');
@@ -468,7 +468,7 @@ figure('Name','剂量分解条形图','Position',[120,120,1100,420]);
 bar(edgeDoseList);
 grid on;
 xlabel('回路边序号');
-ylabel('该边剂量贡献');
+ylabel('该边暴露代价贡献');
 title('最优巡检回路的剂量分解（逐边贡献）');
 hold on;
 idxA = find(edgeTypeList==1);
@@ -476,7 +476,7 @@ if ~isempty(idxA)
     scatter(idxA, edgeDoseList(idxA), 50, 'r', 'filled', 'MarkerEdgeColor','k');
 end
 hold off;
-legend({'边剂量','A*绕障边'}, 'Location','northeast');
+legend({'边暴露代价','A*绕障边'}, 'Location','northeast');
 
 %% ===================== 8) Save MAT result =====================
 resultFile = 'result_case3_mixed_obstacle.mat';

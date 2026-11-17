@@ -204,8 +204,8 @@ hold on; box on; grid on;
 b = bar(valsDose, 0.58);
 b.FaceColor = 'flat';
 b.CData = [col_free; col_obs];
-ylabel('总剂量 (\muSv)','FontName',fontName,'FontSize',fsAxis);
-title('总剂量对比','FontName',fontName,'FontSize',fsTitle-1,'FontWeight','bold');
+ylabel('总暴露代价 (a.u.)','FontName',fontName,'FontSize',fsAxis);
+title('总暴露代价对比','FontName',fontName,'FontSize',fsTitle-1,'FontWeight','bold');
 set(gca,'XTick',1:2,'XTickLabel',{'无障碍精细','有障碍混合'}, ...
     'FontName',fontName,'FontSize',fsTick,'LineWidth',1.1);
 text(1.5, max(valsDose)*1.03, sprintf('\\Delta = %.2f%%', deltaDosePct), ...
@@ -270,7 +270,7 @@ plotTourLOS(tour_free, xCoords, yCoords, lwMinor);
 
 xlabel('X坐标','FontName',fontName,'FontSize',fsAxis);
 ylabel('Y坐标','FontName',fontName,'FontSize',fsAxis);
-title(sprintf('无障碍精细模型\n总剂量 = %.3f \\muSv, 总距离 = %.1f m', dose_free, len_free), ...
+title(sprintf('无障碍精细模型\n总暴露代价 = %.3f \a.u., 总距离 = %.1f m', dose_free, len_free), ...
     'FontName',fontName,'FontSize',fsTitle-1,'FontWeight','bold');
 set(gca,'FontName',fontName,'FontSize',fsTick,'LineWidth',1.1);
 
@@ -301,7 +301,7 @@ plotTourMixedTrueAstar(tour_obs, xCoords, yCoords, edgeType_obs, ...
 
 xlabel('X坐标','FontName',fontName,'FontSize',fsAxis);
 ylabel('Y坐标','FontName',fontName,'FontSize',fsAxis);
-title(sprintf('有障碍混合模型\n总剂量 = %.3f \\muSv, 总距离 = %.1f m, A*边 = %d', ...
+title(sprintf('有障碍混合模型\n总暴露代价 = %.3f \a.u., 总距离 = %.1f m, A*边 = %d', ...
     dose_obs, len_obs, nAStar_obs), ...
     'FontName',fontName,'FontSize',fsTitle-1,'FontWeight','bold');
 set(gca,'FontName',fontName,'FontSize',fsTick,'LineWidth',1.1);

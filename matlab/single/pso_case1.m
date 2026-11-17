@@ -38,7 +38,7 @@ numNodes = length(nodeIDs);
 doseMatrix = zeros(numNodes, numNodes);
 
 % 填充已知的剂量关系（基于论文中的路径和剂量值）
-% 最优路径剂量：63.75 μSv，另一路径：76.91 μSv
+% 最优路径剂量：63.75 a.u.，另一路径：76.91 a.u.
 % 这里使用距离和随机因子模拟剂量关系
 for i = 1:numNodes
     for j = i+1:numNodes
@@ -61,11 +61,11 @@ end
 
 % 归一化剂量矩阵使平均剂量接近论文值
 currentAvg = mean(doseMatrix(doseMatrix>0));
-scaleFactor = 70 / currentAvg; % 目标平均剂量~70μSv
+scaleFactor = 70 / currentAvg; % 目标平均剂量~70a.u.
 doseMatrix = doseMatrix * scaleFactor;
 
 %% 三维热图可视化（图2等效）
-figure('Name','节点间有效剂量三维热图','Position',[100,100,800,600]);
+figure('Name','节点间暴露代价三维热图','Position',[100,100,800,600]);
 
 % 创建网格
 [X,Y] = meshgrid(1:numNodes,1:numNodes);
@@ -75,10 +75,10 @@ surf(X,Y,doseMatrix);
 shading interp;
 colormap jet;
 colorbar;
-title('节点间有效剂量三维热图 (μSv)');
+title('节点间暴露代价矩阵三维热图 (a.u.)');
 xlabel('起始节点');
 ylabel('目标节点');
-zlabel('有效剂量 (μSv)');
+zlabel('暴露代价 (a.u.)');
 set(gca,'XTick',1:numNodes,'YTick',1:numNodes);
 view(-30,30); % 调整视角
 grid on;
@@ -118,7 +118,7 @@ for i = 1:(length(optimalPath)-1)
 end
 
 % 添加标签和标题
-title(sprintf('最优路径规划 (总剂量: %.2f μSv)', optimalDose));
+title(sprintf('最优路径规划 (总暴露代价: %.2f a.u.)', optimalDose));
 xlabel('X坐标 (m)');
 ylabel('Y坐标 (m)');
 legend('普通节点','辐射热点','路径','Location','best');
@@ -159,7 +159,7 @@ for i = 1:(length(altPath)-1)
 end
 
 % 添加标签和标题
-title(sprintf('对比路径规划 (总剂量: %.2f μSv)', altDose));
+title(sprintf('对比路径规划 (总暴露代价: %.2f a.u.)', altDose));
 xlabel('X坐标 (m)');
 ylabel('Y坐标 (m)');
 legend('普通节点','辐射热点','路径','Location','best');
@@ -169,8 +169,8 @@ axis equal;
 %% 结果输出
 fprintf('===== 案例1复现结果 =====\n');
 fprintf('最优路径: %s\n', strjoin(cellstr(num2str(optimalPath)),'-'));
-fprintf('最优路径总剂量: %.2f μSv\n', optimalDose);
+fprintf('最优路径总暴露代价: %.2f a.u.\n', optimalDose);
 fprintf('对比路径: %s\n', strjoin(cellstr(num2str(altPath)),'-'));
-fprintf('对比路径总剂量: %.2f μSv\n', altDose);
-fprintf('剂量减少: %.2f μSv (%.1f%%)\n',...
+fprintf('对比路径总暴露代价: %.2f a.u.\n', altDose);
+fprintf('剂量减少: %.2f a.u. (%.1f%%)\n',...
     altDose-optimalDose, (altDose-optimalDose)/altDose*100);

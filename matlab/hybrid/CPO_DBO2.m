@@ -97,7 +97,7 @@ sources = [
 % 放射源强度系数
 sourceStrength = [8000, 12000, 10000, 15000, 9000, 13000, 11000];
 
-%% 计算剂量矩阵 doseMatrix (μSv)
+%% 计算暴露代价矩阵 doseMatrix (a.u.)
 doseMatrix = zeros(numNodes, numNodes);
 
 % 计算每个节点辐射水平
@@ -150,7 +150,7 @@ end
 
 %% 输出剂量矩阵到CSV
 csvwrite('dose_matrix_case3.csv', doseMatrix);
-fprintf('\n剂量矩阵已保存到文件: dose_matrix_case3.csv\n');
+fprintf('\n暴露代价矩阵已保存到文件: dose_matrix_case3.csv\n');
 
 %% ===================== CPO-DBO参数 ==========================
 M = 400;                 % 种群规模
@@ -297,7 +297,7 @@ for iter = 1:maxIter
     convergence(iter) = gBestFitness;
 
     if mod(iter, 50) == 0
-        fprintf('Iter %d/%d | Best dose: %.4f μSv | (pD=%.2f, pA=%.2f, pE=%.2f)\n',...
+        fprintf('Iter %d/%d | Best dose: %.4f a.u. | (pD=%.2f, pA=%.2f, pE=%.2f)\n',...
             iter, maxIter, gBestFitness, defenseProb, attackProb, escapeProb);
     end
 end
@@ -307,7 +307,7 @@ end
 figure('Name', '算法收敛曲线', 'Position', [100, 100, 800, 400]);
 plot(convergence, 'LineWidth', 2);
 xlabel('迭代次数');
-ylabel('最优剂量 (μSv)');
+ylabel('最优暴露代价 (a.u.)');
 title('CPO-DBO（Permutation-safe）收敛曲线 (案例3: 51节点)');
 grid on;
 
@@ -348,7 +348,7 @@ xlim([0 200]); ylim([0 200]);
 set(gca, 'FontSize', 12);
 xlabel('X坐标 (m)', 'FontSize', 14);
 ylabel('Y坐标 (m)', 'FontSize', 14);
-title(sprintf('案例3最优路径规划 (总剂量: %.4f μSv)', gBestFitness), 'FontSize', 16);
+title(sprintf('案例3最优路径规划 (总暴露代价: %.4f a.u.)', gBestFitness), 'FontSize', 16);
 
 scatter(xCoords, yCoords, 100, 'filled', 'MarkerFaceColor', [0.1, 0.5, 0.8], ...
     'MarkerEdgeColor', [0, 0.2, 0.4], 'LineWidth', 1.5);
@@ -386,7 +386,7 @@ set(gca, 'GridColor', [0.85, 0.85, 0.85], 'GridAlpha', 0.7);
 hold off;
 
 % 节点间剂量热力图
-figure('Name', '节点间有效剂量热力图', 'Position', [100, 100, 1000, 850]);
+figure('Name', '节点间暴露代价热力图', 'Position', [100, 100, 1000, 850]);
 colors = [0.0, 0.0, 1.0;
           0.0, 1.0, 0.0;
           1.0, 1.0, 0.0;
@@ -398,7 +398,7 @@ customMap = interp1(colorPos, colors, linspace(0,1,256));
 imagesc(doseMatrix);
 colormap(customMap);
 c = colorbar;
-c.Label.String = '有效剂量 (μSv)';
+c.Label.String = '暴露代价 (a.u.)';
 c.Label.FontSize = 12;
 c.FontSize = 11;
 
@@ -406,7 +406,7 @@ set(gca, 'XTick', 1:numNodes, 'YTick', 1:numNodes, ...
          'FontSize', 8, 'XAxisLocation', 'top');
 xlabel('目标节点', 'FontSize', 14, 'FontWeight', 'bold');
 ylabel('起始节点', 'FontSize', 14, 'FontWeight', 'bold');
-title('节点间有效剂量热力图 (案例3: 51节点)', 'FontSize', 16, 'FontWeight', 'bold');
+title('节点间暴露代价矩阵热力图 (案例3: 51节点)', 'FontSize', 16, 'FontWeight', 'bold');
 
 hold on;
 for i = 1:numNodes+1
@@ -445,7 +445,7 @@ hold off;
 %% 输出结果
 fprintf('\n===== 案例3复现结果 (Permutation-safe CPO-DBO) =====\n');
 fprintf('最优路径: %s\n', strjoin(cellstr(num2str(gBestPath')), '->'));
-fprintf('最优路径总剂量: %.4f μSv\n', gBestFitness);
+fprintf('最优路径总暴露代价: %.4f a.u.\n', gBestFitness);
 fprintf('算法总迭代次数: %d\n', maxIter);
 
 fprintf('放射源位置:\n');

@@ -275,7 +275,7 @@ set(gca, 'YTick', 1:kShow_all, ...
     'YDir', 'reverse', ...
     'FontName', fontName, 'FontSize', fsTick, 'LineWidth', 1.1);
 
-xlabel('剂量贡献 (\muSv)','FontName',fontName,'FontSize',fsAxis);
+xlabel('剂量贡献 (a.u.)','FontName',fontName,'FontSize',fsAxis);
 ylabel('边对（按剂量贡献排序）','FontName',fontName,'FontSize',fsAxis);
 title(sprintf('有障碍混合模型中高剂量贡献边排序（Top-%d）', kShow_all), ...
     'FontName',fontName,'FontSize',fsTitle,'FontWeight','bold');
@@ -316,7 +316,7 @@ if ~isempty(idxAstar)
     end
 
     xlabel('边长度 (m)','FontName',fontName,'FontSize',fsAxis);
-    ylabel('边剂量 (\muSv)','FontName',fontName,'FontSize',fsAxis);
+    ylabel('边暴露代价 (a.u.)','FontName',fontName,'FontSize',fsAxis);
     title('关键 A* 边在无障碍直线与有障碍绕障条件下的长度-剂量变化', ...
         'FontName',fontName,'FontSize',fsTitle,'FontWeight','bold');
     legend({'无障碍直线边','有障碍A*边'}, 'Location','northwest', ...
@@ -348,7 +348,7 @@ if ~isempty(Tchange)
     set(gca, 'XTick', X, 'XTickLabel', labelsChange, ...
         'FontName',fontName,'FontSize',fsTick,'LineWidth',1.1);
     xtickangle(35);
-    ylabel('边剂量 (\muSv)','FontName',fontName,'FontSize',fsAxis);
+    ylabel('边暴露代价 (a.u.)','FontName',fontName,'FontSize',fsAxis);
     title('障碍后新增关键边：剂量比较', ...
         'FontName',fontName,'FontSize',fsTitle-1,'FontWeight','bold');
     legend({'无障碍直线','有障碍边'}, 'Location','best', ...

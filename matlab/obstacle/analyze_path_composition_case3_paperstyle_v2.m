@@ -192,7 +192,7 @@ b.FaceColor = 'flat';
 b.CData = [col_los; col_astar];
 set(gca,'XTick',1:2,'XTickLabel',{'LOS边','A*边'}, ...
     'FontName',fontName,'FontSize',fsTick,'LineWidth',1.1);
-ylabel('剂量贡献 (\muSv)','FontName',fontName,'FontSize',fsAxis);
+ylabel('剂量贡献 (a.u.)','FontName',fontName,'FontSize',fsAxis);
 title('剂量绝对贡献','FontName',fontName,'FontSize',fsTitle-1,'FontWeight','bold');
 hold off;
 
@@ -227,7 +227,7 @@ b(1).FaceColor = col_los;
 b(2).FaceColor = col_astar;
 
 set(gca, 'XTick', 1:2, ...
-    'XTickLabel', {'剂量占比', '距离占比'}, ...
+    'XTickLabel', {'暴露代价占比', '距离占比'}, ...
     'FontName', fontName, 'FontSize', fsTick, 'LineWidth', 1.1);
 ylabel('占比 (%)','FontName',fontName,'FontSize',fsAxis);
 title('有障碍混合模型中 LOS / A* 边的占比分析', ...
@@ -283,7 +283,7 @@ set(gca, 'YTick', 1:kShow, ...
     'YDir', 'reverse', ...
     'FontName', fontName, 'FontSize', fsTick, 'LineWidth', 1.1);
 
-xlabel('剂量贡献 (\muSv)','FontName',fontName,'FontSize',fsAxis);
+xlabel('剂量贡献 (a.u.)','FontName',fontName,'FontSize',fsAxis);
 ylabel('边对（按剂量贡献排序）','FontName',fontName,'FontSize',fsAxis);
 title(sprintf('有障碍混合模型中高贡献边排序分析（Top-%d）', kShow), ...
     'FontName',fontName,'FontSize',fsTitle,'FontWeight','bold');
@@ -311,11 +311,11 @@ saveas(fig3, fullfile(outDir, 'top_contributing_edges_barh_paper.png'));
 fprintf('\n===== 有障碍路径组成核心结果 =====\n');
 fprintf('LOS边数量: %d\n', nLOS_obs);
 fprintf('A*边数量: %d\n', nAStar_obs);
-fprintf('LOS边剂量总和: %.4f\n', doseLOS_obs);
-fprintf('A*边剂量总和: %.4f\n', doseAStar_obs);
+fprintf('LOS边暴露代价总和: %.4f\n', doseLOS_obs);
+fprintf('A*边暴露代价总和: %.4f\n', doseAStar_obs);
 fprintf('LOS边距离总和: %.4f\n', lenLOS_obs);
 fprintf('A*边距离总和: %.4f\n', lenAStar_obs);
-fprintf('A*边剂量占总剂量比例: %.2f%%\n', ratioDoseAStar_obs);
+fprintf('A*边暴露代价占总暴露代价比例: %.2f%%\n', ratioDoseAStar_obs);
 fprintf('A*边距离占总距离比例: %.2f%%\n', ratioLenAStar_obs);
 
 %% ===================== 13) 保存 MAT =====================
