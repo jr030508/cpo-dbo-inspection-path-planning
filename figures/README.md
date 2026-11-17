@@ -15,6 +15,8 @@ provenance only — **do not use them in the manuscript**.
 
 | Paper | File(s) in `paper/` | Source `.fig` |
 |---|---|---|
+| 图1  Workflow / technical route | `fig01_workflow_overview.png` | — |
+| 图2  CPO-DBO algorithm flowchart | `fig02_algorithm_flowchart.png` | — |
 | 图3  30-node base scene | (legacy `figures/legacy/`, unchanged) | — |
 | 图4  Exposure-cost matrix heatmap (30 nodes) | `fig04_exposure_cost_heatmap_30nodes.jpg` | `fig04_exposure_cost_heatmap.fig` |
 | 图6  Convergence curves (a)DBO (b)IPSO (c)CPO-DBO (d)CPO | `fig06_convergence_4panels.png` + per-panel `fig06_panel_a..d_*.jpg` | `fig06_panel_a_dbo.fig`, `fig06_panel_b_ipso.fig`, `fig06_panel_c_cpo_dbo.fig`, `fig06_panel_d_cpo.fig` |
@@ -31,24 +33,16 @@ Figures 5, 7, 9, 12, 13, 15–19 were either already correctly labelled or
 are produced by the Python analysis pipeline (`python/analyze_*.py`, outputs
 under `figures/revision/` and `figures/supplementary/`).
 
-## Known pending label fixes (found 2026-11-17 evening)
+## Label fixes (all resolved 2026-11-17)
 
-1. 图22 `fig22_los_a_edge_proportion.jpg`: first x-axis category label reads
-   **"Exposure-cost Proportiom"** — typo, should be "Proportion".
-   Fix in the `.fig` source and re-export.
-2. 图1 flowchart (`流程图.png`): three legacy labels remain —
-   "Mean Optimal Dose" → "Mean Optimal Exposure Cost",
-   "Dose Decomposition" → "Exposure-cost Decomposition",
-   "Low-dose inspection" → "Low-exposure inspection".
-
-## Label fixes (resolved 2026-11-17)
-
-All label issues are resolved in the current `paper/` and `fig_sources/`
-files (verified against the re-exported originals):
-
-1. 图6 panels + combined PNG: legend reads **"Optimal exposure cost"**.
-2. 图4 heatmap: Y-axis label reads **"Start Node"**.
-3. 图21 panel (a) title reads **212.346 a.u.**, consistent with Table 15
+1. 图22 x-axis label: "Exposure-cost **Proportion**" (typo "Proportiom" fixed
+   in the re-export; `paper/` and `fig_sources/` hold the fixed version).
+2. 图1 flowchart: legacy labels renamed to "Low Relative Traversal Exposure
+   Cost", "Average Optimal Total Exposure Cost", "Decomposition Of Relative
+   Traversal Exposure Cost".
+3. 图6 panels + combined PNG: legend reads **"Optimal exposure cost"**.
+4. 图4 heatmap: Y-axis label reads **"Start Node"**.
+5. 图21 panel (a) title reads **212.346 a.u.**, consistent with Table 15
    (212.35 a.u.); panel (b) matches 216.78 / 1070.1.
 
 `matlab/figure_label_fixes/` documents the original fixes and is kept for
