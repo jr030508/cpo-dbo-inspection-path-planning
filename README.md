@@ -30,7 +30,11 @@ rank-biserial effect sizes).
 │   ├── timing/                  Single-process timing
 │   ├── obstacle/                Standardized obstacle re-run (mechanism illustration)
 │   └── raw_runs/                Run-level records (4,000 runs + transfer + timing)
-├── figures/                     Paper figures (supplementary, corrected revision, legacy)
+├── figures/                     Paper figures
+│   ├── paper/                   Final exported figures (exposure-cost labels)
+│   ├── fig_sources/             MATLAB .fig sources for every redrawn panel
+│   ├── revision|supplementary/  Python-pipeline analysis figures
+│   └── legacy/                  Earlier drafts (provenance only)
 └── docs/REPRODUCTION.md         Step-by-step reproduction guide
 ```
 

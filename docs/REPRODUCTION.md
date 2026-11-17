@@ -92,6 +92,18 @@ python redraw_legacy_figures.py   # reads data/benchmarks/*/results_*.mat
 Regenerates the descriptive MATLAB-era figures (box plots, ECDF, convergence) in
 publication style from the committed benchmark outputs.
 
+## 6b. Authoritative paper-figure sources
+
+The final manuscript figures (labels: *relative exposure cost (a.u.*) are in
+`figures/paper/`, and their editable MATLAB `.fig` sources in
+`figures/fig_sources/` — see `figures/README.md` for the figure-number map.
+
+Three residual label issues are tracked in `matlab/figure_label_fixes/`:
+run `fix_labels` there to (1) rename the 图6 legend "Optimal Dose" →
+"Optimal exposure cost", (2) fix the 图4 Y-axis typo "Start Npde" →
+"Start Node", and (3) print the 图21(a) title so its value (212.364 a.u.)
+can be reconciled with Table 15 (212.35 a.u.) by hand.
+
 ## 7. Standardized obstacle re-run (mechanism illustration only)
 
 ```bash
