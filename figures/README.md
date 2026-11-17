@@ -30,16 +30,15 @@ Figures 5, 7, 9, 12, 13, 15–19, 22 were either already correctly labelled or
 are produced by the Python analysis pipeline (`python/analyze_*.py`, outputs
 under `figures/revision/` and `figures/supplementary/`).
 
-## Known pending label fixes
+## Label fixes (resolved 2026-11-17)
 
-Tracked in `matlab/figure_label_fixes/fix_labels.m` (run once in MATLAB,
-then re-export and replace the affected files):
+All label issues are resolved in the current `paper/` and `fig_sources/`
+files (verified against the re-exported originals):
 
-1. 图6 panels + combined PNG: legend still reads **"Optimal Dose"** — should
-   be "Optimal exposure cost". (Y-axis label is already correct.)
-2. 图4 heatmap: Y-axis label reads **"Start Npde"** — typo, should be
-   "Start Node".
-3. 图21 panel (a) title shows **212.364 a.u.** while Table 15 reports
-   **212.35 a.u.** (= 212.346). Verify the MATLAB path-sum computation and
-   make figure title and table consistent (216.78 / 1070.1 for panel (b)
-   already match).
+1. 图6 panels + combined PNG: legend reads **"Optimal exposure cost"**.
+2. 图4 heatmap: Y-axis label reads **"Start Node"**.
+3. 图21 panel (a) title reads **212.346 a.u.**, consistent with Table 15
+   (212.35 a.u.); panel (b) matches 216.78 / 1070.1.
+
+`matlab/figure_label_fixes/` documents the original fixes and is kept for
+reference; the patched files are already committed here.

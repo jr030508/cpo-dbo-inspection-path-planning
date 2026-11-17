@@ -98,11 +98,11 @@ The final manuscript figures (labels: *relative exposure cost (a.u.*) are in
 `figures/paper/`, and their editable MATLAB `.fig` sources in
 `figures/fig_sources/` — see `figures/README.md` for the figure-number map.
 
-Three residual label issues are tracked in `matlab/figure_label_fixes/`:
-run `fix_labels` there to (1) rename the 图6 legend "Optimal Dose" →
-"Optimal exposure cost", (2) fix the 图4 Y-axis typo "Start Npde" →
-"Start Node", and (3) print the 图21(a) title so its value (212.364 a.u.)
-can be reconciled with Table 15 (212.35 a.u.) by hand.
+Three label issues found during review (图6 legend "Optimal Dose", 图4
+Y-axis typo "Start Npde", 图21(a) title value vs. Table 15) were fixed on
+2026-11-17 and the patched exports/`.fig` files are already committed in
+`figures/paper/` and `figures/fig_sources/`. `matlab/figure_label_fixes/`
+documents what was changed and is kept for reference.
 
 ## 7. Standardized obstacle re-run (mechanism illustration only)
 
